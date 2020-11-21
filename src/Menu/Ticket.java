@@ -43,7 +43,7 @@ public class Ticket {
             choice = scr.nextInt();
             switch (choice) {
                 case 1:
-                    int index;
+                    
                     System.out.println("---------------------------------------------");
                     System.out.println("           Number Of Ticket");
                     noTicket = scr.nextInt();
