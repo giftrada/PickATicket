@@ -58,19 +58,21 @@ public class Ticket {
                     System.out.println("\n\nSelect Your Seat");
                     for (int i = 0; i < noTicket; i++) {
                             noSeat[i] = scr.nextInt();
+                             
                         while (noSeat[i]>99){
                             System.out.println("Not have Number of Seat , Please Select again. ");
                             noSeat[i] = scr.nextInt();
                         }
-                            index = noSeat[i]; 
+                            index = noSeat[i];
+                    }
+                        for (int i = 0; i < noTicket; i++) {    
                             Check();
+                            index = noSeat[i];
                             if (detect == 0) {
                                 noSeat[head++] = index;
                                 System.out.println("Booking Successful");
                                 Receipt();
                                 break;
-                            }else {
-                                
                             }
                         }
                     Menu();
@@ -94,16 +96,18 @@ public class Ticket {
         System.out.println("---------------------------------------------------------");
                               
     }
-
+    
     public void Check() {
+    
         detect = 0;
         for (int i = 0; i <= head; i++) {
-            if(index == noSeat[i]){
-                System.out.println("Booked");
+            while(index == noSeat[i]){
                 detect = 1;
-                break;
-           }else   {
-           }
-        }
+                System.out.println("Booked");
+                noSeat[i] = scr.nextInt();               
+           }  index = noSeat[i];
+        } Receipt();
     }
+
+  
 }
