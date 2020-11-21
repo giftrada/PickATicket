@@ -49,12 +49,7 @@ public class Ticket {
                     noTicket = scr.nextInt();
                     System.out.println("---------------------------------------------");
 
-                    for (int i = 0; i <= 99; i++) {
-                        if ((i == 10) || (i == 20) || (i == 30) || (i == 40) || (i == 50) || (i == 60) || (i == 70) || (i == 80) || (i == 90)) {
-                            System.out.println("\n");
-                        }
-                        System.out.print(seat[i]); 
-                    }
+                    layout();
                     System.out.println("\n\nSelect Your Seat");
                     for (int i = 0; i < noTicket; i++) {
                             noSeat[i] = scr.nextInt();
@@ -107,6 +102,15 @@ public class Ticket {
                 noSeat[i] = scr.nextInt();               
            }  index = noSeat[i];
         } Receipt();
+    }
+    
+    public void layout(){
+     for (int i = 0; i <= 99; i++) {
+         if ((i == 10) || (i == 20) || (i == 30) || (i == 40) || (i == 50) || (i == 60) || (i == 70) || (i == 80) || (i == 90)) {
+         System.out.println("\n");
+          }
+          System.out.print(seat[i]); 
+          }   
     }
 
   
