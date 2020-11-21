@@ -14,6 +14,9 @@ import java.util.Scanner;
  */
 public class Ticket {
     Scanner scr = new Scanner(System.in);    
+    private int head;
+    private int index;
+    private int detect;
     private int noTicket;
     private int choice;
     private String[] seat = new String[100];
@@ -60,6 +63,14 @@ public class Ticket {
                             noSeat[i] = scr.nextInt();
                         }
                             index = noSeat[i]; 
+                            Check();
+                            if (detect == 0) {
+                                noSeat[head++] = index;
+                                System.out.println("Booking Successful");
+                                break;
+                            }else {
+                                
+                            }
                         }
                     Receipt();
                     break;
@@ -81,5 +92,17 @@ public class Ticket {
         System.out.println("           TOTAL AMOUNT:" + noTicket * 500 + "           ");
         System.out.println("---------------------------------------------------------");
                               
+    }
+
+    public void Check() {
+        detect = 0;
+        for (int i = 0; i <= head; i++) {
+            if(index == noSeat[i]){
+                System.out.println("Booked");
+                detect = 1;
+                break;
+           }else   {
+           }
+        }
     }
 }
