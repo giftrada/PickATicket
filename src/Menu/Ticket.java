@@ -67,12 +67,13 @@ public class Ticket {
                             if (detect == 0) {
                                 noSeat[head++] = index;
                                 System.out.println("Booking Successful");
+                                Receipt();
                                 break;
                             }else {
                                 
                             }
                         }
-                    Receipt();
+                    Menu();
                     break;
                       
                 case 2:
