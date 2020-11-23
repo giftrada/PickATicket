@@ -5,113 +5,118 @@
  */
 package Menu;
 
+import Login.Login;
 import java.util.Scanner;
-
 
 /**
  *
  * @author giftradakorn
  */
 public class Ticket {
-    Scanner scr = new Scanner(System.in);    
-    private int head;
+
+    Scanner scr = new Scanner(System.in);
+    
     private int index;
-    private int detect;
     private int noTicket;
     private int choice;
     private String[] seat = new String[100];
     private int[] noSeat = new int[100];
     private String nameMusical;
+    Login name = new Login();
     
     public Ticket(String nameMusical) {
         this.nameMusical = nameMusical;
     }
-    
-    public void Menu(){
-      System.out.println("Welcome to Pick a Ticket");
-      System.out.println("---------------------------------------------");
-      System.out.println("Today Musical show" + " " +nameMusical);
-      System.out.println("         (1)Booking  (2)Exit       ");   
-    }  
-    
-    public int Select(Scanner input){
+    public void Login(){
+        System.out.print("PLEASE LOG IN");
+        System.out.print("\n>>USERNAME : ");
+        String inputUser = scr.nextLine();
+        
+        if (inputUser.equals(name.getUser())) {
+            System.out.print(">>PASSWORD : ");
+        } else {
+            System.out.println("\nTRY AGAIN!");
+            Login();
+        }
+        
+        String inputPassword = scr.nextLine();
+        if (inputPassword.equals(name.getPassword())) {
+            System.out.println("\nLOG IN COMPLETE!\n");
+            
+        } else {
+            System.out.println("\nTRY AGAIN!");
+            Login();
+        }
+    }
+
+    public void Menu() {
+        System.out.println("         WELCOME TO PICK A TICKET         ");
+        System.out.println("---------------------------------------------");
+        System.out.println("   TODAY MUSICAL SHOW " + " " + nameMusical  );
+        System.out.println("           (1)BOOKING   (2)EXIT         ");
+    }
+
+    public int Select(Scanner input) {
         for (int i = 0; i <= 99; i++) {
             seat[i] = "[" + i + "]";
         }
-        
+
         while (true) {
             choice = scr.nextInt();
             switch (choice) {
                 case 1:
-                    
+
                     System.out.println("---------------------------------------------");
-                    System.out.println("           Number Of Ticket");
+                    System.out.println("             NUMBER OF TICKET                ");
                     noTicket = scr.nextInt();
                     System.out.println("---------------------------------------------");
 
                     layout();
-                    System.out.println("\n\nSelect Your Seat");
+                    System.out.println("\n\nSELECT YOUR SEAT : ");
                     for (int i = 0; i < noTicket; i++) {
-                            noSeat[i] = scr.nextInt();
-                             
-                        while (noSeat[i]>99){
-                            System.out.println("Not have Number of Seat , Please Select again. ");
+                        noSeat[i] = scr.nextInt();
+                        index=noSeat[i];
+                        while (noSeat[i] > 99) {
+                            System.out.println("NOT HAVE NUMBER OF SEAT , PLEASE SELECT AGAIN ");
                             noSeat[i] = scr.nextInt();
                         }
-                            index = noSeat[i];
+                        index = noSeat[i];
                     }
-                        for (int i = 0; i < noTicket; i++) {    
-                            Check();
-                            index = noSeat[i];
-                            if (detect == 0) {
-                                noSeat[head++] = index;
-                                System.out.println("Booking Successful");
-                                Receipt();
-                                break;
-                            }
-                        }
+                   
+                    
+                    Receipt();
                     Menu();
                     break;
-                      
+
                 case 2:
-                    System.out.println("Thankyou and Hope to see you again.");
+                    System.out.println("THANK YOU! AND HOPE TO SEE YOU AGAIN <3");
                     break;
             }
         }
-    }  
-    public void Receipt(){
-        System.out.println("---------------------------------------------");
-        System.out.println("                  THEATRE                    ");
-        System.out.println("              "+nameMusical+"                ");
-                            
-        for (int i = 0; i < noTicket; i++) {
-            System.out.println("              SEAT NO.:" + noSeat[i] + "              ");
-        }
-        System.out.println("           TOTAL AMOUNT:" + noTicket * 500 + "           ");
-        System.out.println("---------------------------------------------------------");
-                              
-    }
-    
-    public void Check() {
-    
-        detect = 0;
-        for (int i = 0; i <= head; i++) {
-            while(index == noSeat[i]){
-                detect = 1;
-                System.out.println("Booked");
-                noSeat[i] = scr.nextInt();               
-           }  index = noSeat[i];
-        } Receipt();
-    }
-    
-    public void layout(){
-     for (int i = 0; i <= 99; i++) {
-         if ((i == 10) || (i == 20) || (i == 30) || (i == 40) || (i == 50) || (i == 60) || (i == 70) || (i == 80) || (i == 90)) {
-         System.out.println("\n");
-          }
-          System.out.print(seat[i]); 
-          }   
     }
 
-  
+    public void Receipt() {
+        System.out.println("---------------------------------------------");
+        System.out.println("                  THEATRE                    ");
+        System.out.println("                 " + nameMusical + "             ");
+        System.out.println("                   "+ name.toString() + "          ");
+        for (int i = 0; i < noTicket; i++) {
+            System.out.println("                SEAT NO.:" + noSeat[i] + "       ");
+        }
+        System.out.println("              TOTAL AMOUNT:" + noTicket * 500 + "       ");
+        System.out.println("---------------------------------------------");
+
+    }
+
+   
+
+    public void layout() {
+        for (int i = 0; i <= 99; i++) {
+            if ((i == 10) || (i == 20) || (i == 30) || (i == 40) || (i == 50) || (i == 60) || (i == 70) || (i == 80) || (i == 90)) {
+                System.out.println("\n");
+            }
+            System.out.print(seat[i]);
+        }
+    }
+
 }
