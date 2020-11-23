@@ -7,15 +7,15 @@ package Menu;
 
 import java.util.Scanner;
 
-
-
 public class Menu {
-     public static void main(String[] args) {
-     
-     Ticket tic=new Ticket("abcde");
-     Scanner scr = new Scanner(System.in);
-     tic.Menu();
-     tic.Select(scr);
-     
-}
+
+    public static void main(String[] args) {
+
+        Ticket tic = new Ticket("CINDERELLA");
+        Scanner scr = new Scanner(System.in);
+        tic.Login();
+        tic.Menu();
+        tic.Select(scr);
+
+    }
 }
