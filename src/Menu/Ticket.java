@@ -42,7 +42,7 @@ public class Ticket {
         String inputPassword = scr.nextLine();
         if (inputPassword.equals(name.getPassword())) {
             System.out.println("\nLOG IN COMPLETE!\n");
-            
+            Menu();
         } else {
             System.out.println("\nTRY AGAIN!");
             Login();
@@ -57,9 +57,7 @@ public class Ticket {
     }
 
     public int Select(Scanner input) {
-        for (int i = 0; i <= 99; i++) {
-            seat[i] = "[" + i + "]";
-        }
+       
 
         while (true) {
             choice = scr.nextInt();
@@ -111,6 +109,9 @@ public class Ticket {
    
 
     public void layout() {
+         for (int i = 0; i <= 99; i++) {
+            seat[i] = "[" + i + "]";
+        }
         for (int i = 0; i <= 99; i++) {
             if ((i == 10) || (i == 20) || (i == 30) || (i == 40) || (i == 50) || (i == 60) || (i == 70) || (i == 80) || (i == 90)) {
                 System.out.println("\n");
