@@ -14,7 +14,7 @@ public class Menu {
         Ticket tic = new Ticket("CINDERELLA");
         Scanner scr = new Scanner(System.in);
         tic.Login();
-        tic.Menu();
+        
         tic.Select(scr);
 
     }
